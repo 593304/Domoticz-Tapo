@@ -25,7 +25,6 @@
 </plugin>
 """
 import Domoticz
-#from Domoticz import Devices, Parameters
 from PyP100 import PyP100
 import json
 
@@ -34,7 +33,7 @@ import json
 class Heartbeat():
     def __init__(self):
         self.callback = None
-        self.interval = 10
+        self.interval = 1
 
     def setHeartbeat(self, callback):
         Domoticz.Heartbeat(self.interval)
@@ -77,15 +76,17 @@ class TapoPlugin:
         # Creating device
         self.unit = 1
         if self.unit not in Devices:
+            typeName = "Selector Switch"
             switchType = 0
             # ToDo: Need a real Tapo bulb to create the dimmer/color switch device for Domoticz
             #if "bulb" in self.lastState["type"].lower():
-            #    switchType = 7
+            #    typeName = ...
+            #    switchType = ...
             
             Domoticz.Device(
                 Name = self.lastState["type"],
                 Unit = self.unit,
-                TypeName = "Selector Switch", 
+                TypeName = typeName, 
                 Switchtype = switchType,
                 Image = 9,
                 Options = {}).Create()
