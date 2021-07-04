@@ -9,6 +9,8 @@ You will also need the IP address of your Tapo device(s).
 ## Installation
 Connect to your Domoticz server via SSH and go to Domoticz's plugins directory. Clone this repository into the plugins directory:  
 `git clone https://github.com/593304/Domoticz-Tapo.git`  
+If necessary modify the access permissions for the plugin. For example:  
+`chmod -R 777 Domoticz-Tapo/`  
 Then restart Domoticz service to add the Tapo plugin to the hardware list in Domoticz.
 ```
 sudo /etc/init.d/domoticz.sh stop
