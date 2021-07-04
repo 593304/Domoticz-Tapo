@@ -22,7 +22,7 @@ sudo service domoticz.sh start
 
 ## Configuration
 If Domoticz started, then go to the Hardware page on your Domoticz website and add a new one. You should find the TP-Link Tapo Plugin in the Type list. Select it and set the following values:
-   - Username (the email of your Tapo account)
+   - Username (the email address of your Tapo account)
    - Password (the password for your Tapo account)
    - IP address (the local IP address of your Tapo device)
    - Debug (you cn turn on or off debug messages)
