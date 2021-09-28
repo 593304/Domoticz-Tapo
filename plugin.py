@@ -145,10 +145,12 @@ class TapoPlugin:
     def update(self, updateDomoticz = True):
         self.p100.handshake()
         self.p100.login()
-        lastState = json.loads(self.p100.getDeviceInfo())
+        deviceInfo = self.p100.getDeviceInfo()
+        Domoticz.Debug("Device info: " + deviceInfo)
+        lastState = json.loads(deviceInfo)
         if lastState["error_code"] != 0:
             self.lastState = None
-            Domoticz.Error("Cannot get last state from devicem error code: " + str(lastState["error_code"]))
+            Domoticz.Error("Cannot get last state from device error code: " + str(lastState["error_code"]))
         else:
             self.lastState = lastState["result"]
             Domoticz.Debug(json.dumps(self.lastState))
