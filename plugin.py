@@ -146,8 +146,11 @@ class TapoPlugin:
         self.p100.handshake()
         self.p100.login()
         deviceInfo = self.p100.getDeviceInfo()
-        Domoticz.Debug("Device info: " + deviceInfo)
-        lastState = json.loads(deviceInfo)
+        if not isinstance(deviceInfo, dict):
+            lastState = json.loads(deviceInfo)
+        else:
+            lastState = deviceInfo
+        
         if lastState["error_code"] != 0:
             self.lastState = None
             Domoticz.Error("Cannot get last state from device error code: " + str(lastState["error_code"]))
